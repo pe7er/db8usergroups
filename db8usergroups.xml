@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="component" method="upgrade">
+    <name>COM_DB8USERGROUPS</name>
+    <author>Peter Martin</author>
+    <creationDate>28 April 2014</creationDate>
+    <copyright>Copyright (C) 2014 Peter Martin / db8.nl</copyright>
+    <license>GNU General Public License version 2</license>
+    <authorEmail>joomla@db8.nl</authorEmail> 
+    <version>0.1</version>
+    <description>COM_DB8USERGROUPS_XML_DESCRIPTION</description>
+
+    <!-- Public front end files -->
+    <files folder="frontend">
+        <folder>assets</folder>
+        <folder>language</folder>
+        <folder>views</folder>
+        <filename>db8usergroups.php</filename>
+        <filename>dispatcher.php</filename>
+        <filename>toolbar.php</filename>
+    </files>
+
+    <!-- SQL query files to execute on installation -->
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install/mysql/install.sql</file>
+            <file driver="mysql">sql/install/mysql/install.sql</file>
+
+            <file driver="mysqli" charset="utf8">sql/install/mysql/install.sql</file>
+            <file driver="mysqli">sql/install/mysql/install.sql</file>
+        </sql>
+    </install>
+
+    <!-- Administrator back-end section -->
+    <administration>
+        <!-- Administration menu -->
+        <menu view="cpanel">COM_DB8USERGROUPS</menu>
+
+        <!-- Back-end files -->
+        <files folder="backend">
+            <folder>helpers</folder>
+            <folder>language</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>views</folder>
+            
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>db8usergroups.php</filename>
+            <filename>fof.xml</filename>
+            <filename>toolbar.php</filename>
+        </files>
+
+    </administration>
+    
+    <!-- Update servers -->
+    <updateservers>
+        <server type="extension" priority="1" name="com_db8usergroups">http://www.db8.nl/updates/com_db8usergroups.xml</server>
+    </updateservers>
+
+</extension>
