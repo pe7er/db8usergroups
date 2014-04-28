@@ -2,6 +2,9 @@ CREATE TABLE IF NOT EXISTS `#__db8usergroups_items` (
     `db8usergroups_item_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
     `usergroupname` varchar(50) NOT NULL,
     `usergroupwebsite` varchar(50) NOT NULL,
+    `usergroupemail` varchar(50) NOT NULL,
+    `logo` varchar(100) NOT NULL,
+    `photo` varchar(100) NOT NULL,
     `fullprovisional` tinyint(3) NOT NULL DEFAULT '1',
     `description` MEDIUMTEXT NOT NULL,
 

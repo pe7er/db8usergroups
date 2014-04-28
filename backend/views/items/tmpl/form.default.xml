@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    @package	db8usergroups
+    @author	Peter Martin
+    @copyright	Copyright (C) 2014 Peter Martin / db8.nl
+    @license	GNU General Public License version 2 or later
+
+    List view of Items
+-->
+
+<form type="browse"
+      show_header="1"
+      show_filters="1"
+      show_pagination="1"
+      norows_placeholder="COM_DB8USERGROUPS_COMMON_NORECORDS">
+    
+    <headerset>
+        <header name="db8usergroups_item_id" type="rowselect" tdwidth="20" />
+        <header name="usergroupname" type="fieldsearchable" sortable="true" buttons="yes" buttonclass="btn" />
+        <header name="latitude" sortable="true" tdwidth="10%" />
+        <header name="longitude" sortable="true" tdwidth="10%" />
+
+        <header name="category" type="category" sortable="true" tdwidth="10%" />
+        <header name="enabled" type="published" sortable="true" tdwidth="8%" />
+        
+        <header name="access" type="accesslevel" sortable="true" tdwidth="10%" />    
+        <header name="author" type="user" sortable="true" tdwidth="10%" />
+        <header name="date" type="date" sortable="true" tdwidth="10%" />        
+        <header name="language" type="language" sortable="true" tdwidth="10%" />    
+        <header name="ordering" type="ordering" sortable="true" tdwidth="1%" />
+        <header name="hits" type="hits" sortable="true" tdwidth="1%" />
+        
+    </headerset>
+
+    <fieldset name="items">
+        <field name="db8usergroups_item_id" show_id="true" type="selectrow"/>
+        <field name="usergroupname" type="text" show_link="true" url="index.php?option=com_db8usergroups&amp;view=item&amp;id=[ITEM:ID]" empty_replacement="(no title)" />
+        <field name="latitude" type="text" tdwidth="10%" />
+        <field name="longitude" type="text" tdwidth="10%" />
+
+        <field name="catid" type="sql" translate="false" query="SELECT * FROM #__categories" key_field="id" value_field="title" />
+        <field name="enabled" type="published"/>
+
+        <field name="access" type="accesslevel" tdwidth="10%" />   
+        <field name="created_by" type="user" show_avatar="false" show_email="false" show_username="false" show_name="true" show_id="false" sortable="true" tdwidth="10%" />
+        <field name="created_on" type="date" tdwidth="10%" />
+        <field name="language" type="text" tdwidth="10%" />                    
+        <field name="ordering" type="ordering" labelclass="order"/>
+        <field name="hits" type="hits" tdwidth="1%" />
+        
+        
+    </fieldset>
+
+</form>
