@@ -15,7 +15,7 @@
               description="COM_DB8USERGROUPS_LOCATION_ITEM_EDIT_BASIC_DESC"
               class="span4">
         
-        <field name="usergroupname" type="text"
+        <field name="title" type="text"
                class="inputbox"
                label="COM_DB8USERGROUPS_ITEM_FIELD_NAME"
                required="true"
@@ -24,7 +24,7 @@
         <field name="usergroupemail" type="text"
                class="inputbox"
                label="COM_DB8USERGROUPS_ITEM_FIELD_EMAIL"
-               required="true"
+               required="false"
                size="50" />
         
         <field name="phone" type="text"

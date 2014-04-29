@@ -21,7 +21,7 @@ Class Db8usergroupsControllerItems extends FOFController {
         if ($result) {
 
             $this->getThisModel()
-                    ->filter_order('usergroupname')
+                    ->filter_order('title')
                     ->filter_order('catid')
                     ->enabled(1);
         }

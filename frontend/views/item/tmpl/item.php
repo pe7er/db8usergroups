@@ -25,7 +25,7 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
     </div>
     <div class="col-md-4">
         <h2>
-            <?php echo $this->item->usergroupname; ?>
+            <?php echo $this->item->title; ?>
         </h2>
         <p>
             <?php echo $this->item->category; ?>
@@ -48,7 +48,7 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
         <?php if (!empty($this->item->googleplus)) { ?>        
             <div>
                 <a target="_blank" href="http://plus.google.com/<?php echo $this->item->googleplus ?>">
-                    <span class="icon-googleplus"></span> <?php echo $this->item->usergroupname ?></a>
+                    <span class="icon-googleplus"></span> <?php echo $this->item->title ?></a>
             </div>
         <?php } ?>     
         <?php if (!empty($this->item->facebook)) { ?>        
@@ -75,7 +75,7 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
     <div class="col-md-4"><h2><?php echo $this->item->description; ?></h2>
         <p>
             <div>
-                <?php echo $this->item->usergroupname; ?>
+                <?php echo $this->item->title; ?>
             </div>
             <div> 
                 <?php echo $this->item->address; ?>

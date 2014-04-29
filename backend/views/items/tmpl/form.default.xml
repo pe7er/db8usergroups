@@ -16,7 +16,7 @@
     
     <headerset>
         <header name="db8usergroups_item_id" type="rowselect" tdwidth="20" />
-        <header name="usergroupname" type="fieldsearchable" sortable="true" buttons="yes" buttonclass="btn" />
+        <header name="title" type="fieldsearchable" sortable="true" buttons="yes" buttonclass="btn" />
         <header name="latitude" sortable="true" tdwidth="10%" />
         <header name="longitude" sortable="true" tdwidth="10%" />
 
@@ -34,7 +34,7 @@
 
     <fieldset name="items">
         <field name="db8usergroups_item_id" show_id="true" type="selectrow"/>
-        <field name="usergroupname" type="text" show_link="true" url="index.php?option=com_db8usergroups&amp;view=item&amp;id=[ITEM:ID]" empty_replacement="(no title)" />
+        <field name="title" type="text" show_link="true" url="index.php?option=com_db8usergroups&amp;view=item&amp;id=[ITEM:ID]" empty_replacement="(no title)" />
         <field name="latitude" type="text" tdwidth="10%" />
         <field name="longitude" type="text" tdwidth="10%" />
 

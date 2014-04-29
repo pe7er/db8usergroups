@@ -42,7 +42,7 @@ foreach ($this->items as $item) :
                 position: latLng,
                 draggable: true,
                 icon: '" . JURI::base() . "components/com_db8usergroups/assets/images/joomla.png',
-                title: '" . str_replace("'", "&apos;", $item->usergroupname) . "',
+                title: '" . str_replace("'", "&apos;", $item->title) . "',
                 content: 'test',
                 clickable: true                
                 });";
@@ -89,7 +89,7 @@ foreach ($this->items as $item) :
                         </a>
                     </td>
                     <td><a href="<?php echo JRoute::_('index.php?option=com_db8usergroups&view=item&id=' . $item->db8usergroups_item_id) ?>">
-                            <?php echo $this->escape($item->usergroupname); ?>
+                            <?php echo $this->escape($item->title); ?>
                         </a>
                     </td>
                     <td><?php echo $this->escape($item->address); ?><br/>
