@@ -1,8 +1,18 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @package todo
+ * @copyright Copyright (c)2012 Nicholas K. Dionysopoulos / AkeebaBackup.com
+ * @license GNU General Public License version 2 or later
  */
 
+defined('_JEXEC') or die;
+
+class Db8peopleToolbar extends FOFToolbar
+{
+    function __construct($config = array())
+    {
+        parent::__construct($config);
+
+        $this->renderFrontendButtons = false;
+    }
+}

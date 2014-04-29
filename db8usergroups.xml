@@ -12,6 +12,7 @@
     <!-- Public front end files -->
     <files folder="frontend">
         <folder>assets</folder>
+        <folder>controllers</folder>
         <folder>language</folder>
         <folder>views</folder>
         <filename>db8usergroups.php</filename>

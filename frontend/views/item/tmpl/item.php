@@ -72,7 +72,7 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
         <?php } ?>     
         </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4"><h2><?php echo $this->item->description; ?></h2>
         <p>
             <div>
                 <?php echo $this->item->usergroupname; ?>
@@ -96,4 +96,4 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
 </p>
 </div>
 </div>
-<input type="button" value="Back" onclick="window.history.back()" /> 
+<input type="button" value="Back" onclick="window.history.back()" />

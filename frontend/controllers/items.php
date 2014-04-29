@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package     db8people
+ * @package     db8usergroups
  * @author	Peter Martin
  * @copyright   Copyright (C) 2014 Peter Martin / db8.nl
  * @license     GNU General Public License version 2 or later

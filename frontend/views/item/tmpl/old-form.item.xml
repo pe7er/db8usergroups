@@ -83,7 +83,7 @@
                size="50" />
         
         <field name="catid" type="category"
-               extension="com_db8people"
+               extension="com_db8usergroups"
                class="inputbox"
                label="COM_DB8LOCATE_ITEM_FIELD_CATEGORY"
                required="true"
