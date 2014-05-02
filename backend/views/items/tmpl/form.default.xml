@@ -21,7 +21,8 @@
         <header name="longitude" sortable="true" tdwidth="10%" />
 
         <header name="category" type="category" sortable="true" tdwidth="10%" />
-        <header name="enabled" type="published" sortable="true" tdwidth="8%" />
+        <header name="enabled" type="published" sortable="true" tdwidth="5%" />
+        <header name="active" type="published" sortable="true" tdwidth="1%" />
         
         <header name="access" type="accesslevel" sortable="true" tdwidth="10%" />    
         <header name="author" type="user" sortable="true" tdwidth="10%" />
@@ -40,6 +41,7 @@
 
         <field name="catid" type="sql" translate="false" query="SELECT * FROM #__categories" key_field="id" value_field="title" />
         <field name="enabled" type="published"/>
+        <field name="active" type="text"/>
 
         <field name="access" type="accesslevel" tdwidth="10%" />   
         <field name="created_by" type="user" show_avatar="false" show_email="false" show_username="false" show_name="true" show_id="false" sortable="true" tdwidth="10%" />

@@ -22,7 +22,19 @@ class Db8usergroupsToolbar extends FOFToolbar {
 
         parent::renderSubmenu();
         $toolbar = FOFToolbar::getAnInstance($this->input->getCmd('option', 'com_db8usergroups'), $this->config);
-        $toolbar->appendLink(Jtext::_('COM_DB8USERGROUPS_SUBMENU_CATEGORIES'), 'index.php?option=com_categories&extension=com_db8usergroups', $vName == 'categories');
+        $toolbar->appendLink(Jtext::_('COM_DB8USERGROUPS_TITLE_CATEGORIES'), 'index.php?option=com_categories&extension=com_db8usergroups', $vName == 'categories');
     }
+
+    public function onItemsBrowse() {
+        parent::onBrowse();
+
+        JToolBarHelper::custom('mapitems', 'copy.png', 'copy_f2.png', 'COM_DB8USERGROUPS_MAPITEM', false);
+    }
+
+   /* public function onItemsEdit() {
+        parent::onBrowse();
+
+        JToolBarHelper::custom('mapitem', 'copy.png', 'copy_f2.png', 'COM_DB8USERGROUPS_MAPITEM', false);
+    }*/
 
 }

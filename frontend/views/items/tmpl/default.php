@@ -17,18 +17,15 @@ if ($itemId != 0) {
 $document = JFactory::getDocument();
 $document->addScript('http://maps.google.com/maps/api/js?sensor=false');
 $document->addScript('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js');
+$document->addStyleSheet(JURI::base()."components/com_db8usergroups/assets/frontend.css");
 $this->loadHelper('item');
-?><style type="text/css">#map {
-    width: auto;
-    height: 450px;
-    border: solid 1pt #b2b2b2;
-}</style>
+?>
 <script type="text/javascript">
     function initialize() {
-        var center = new google.maps.LatLng(35, 0);
+        var center = new google.maps.LatLng(15, 0);
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 2,
+            zoom: 1,
             center: center,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
@@ -41,7 +38,7 @@ foreach ($this->items as $item) :
     echo "var marker = new google.maps.Marker({
                 position: latLng,
                 draggable: true,
-                icon: '" . JURI::base() . "components/com_db8usergroups/assets/images/joomla.png',
+                icon: '" . JURI::base() . "components/com_db8usergroups/assets/images/penguin.png',
                 title: '" . str_replace("'", "&apos;", $item->title) . "',
                 content: 'test',
                 clickable: true                
@@ -55,7 +52,7 @@ foreach ($this->items as $item) :
 </script>
 
 
-<div class="conference">
+<div class="usergroups">
     <div class="row-fluid">
         <h1><?php echo JText::_('COM_DB8USERGROUPS_TITLE') ?></h1>
     </div>
@@ -70,9 +67,9 @@ foreach ($this->items as $item) :
             <thead>
                 <tr>
                     <th></th>
-                    <th>User Group Name</th>
-                    <th>Organisation</th>
-                    <th>Category</th>
+                    <th><?php echo JText::_('COM_DB8USERGROUPS_NAME') ?></th>
+                    <th><?php echo JText::_('COM_DB8USERGROUPS_LOCATION') ?></th>
+                    <th><?php echo JText::_('COM_DB8USERGROUPS_CATEGORY') ?></th>
                 </tr>
             </thead>
             <tbody>

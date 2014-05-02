@@ -33,4 +33,14 @@ abstract class Db8usergroupsHelper {
         $strapper->renderCategoryLinkbar('com_db8usergroups');
     }
 
+    public static function getParam($key, $default = null) {
+        static $params = null;
+
+        if (!is_object($params)) {
+            jimport('joomla.application.component.helper');
+            $params = JComponentHelper::getParams('com_db8usergroups');
+        }
+        return $params->get($key, $default);
+    }
+
 }

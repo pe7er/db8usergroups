@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     db8 locate
+ * @package     db8usergroups
  * @author	Peter Martin
  * @copyright   Copyright (C) 2014 Peter Martin / db8.nl
  * @license     GNU General Public License version 2 or later
@@ -34,7 +34,7 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
                 email: <a target="_blank" href="mailto:<?php echo $this->item->usergroupemail; ?>"><?php echo $this->item->usergroupemail; ?></a>
             </div>
         <?php } ?>     
-        <?php if (!empty($this->item->phone)) { ?>        
+        <?php if ($this->item->phone) { ?>        
             <div>
                 <span class="icon-phone"></span> <?php echo $this->item->phone; ?>
             </div>
@@ -45,25 +45,25 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
                     <span class="icon-earth"></span> <?php echo $this->item->website; ?></a>
             </div>
         <?php } ?>     
-        <?php if (!empty($this->item->googleplus)) { ?>        
+        <?php if ($this->item->googleplus) { ?>        
             <div>
                 <a target="_blank" href="http://plus.google.com/<?php echo $this->item->googleplus ?>">
                     <span class="icon-googleplus"></span> <?php echo $this->item->title ?></a>
             </div>
         <?php } ?>     
-        <?php if (!empty($this->item->facebook)) { ?>        
+        <?php if ($this->item->facebook) { ?>        
             <div>
                 <a target="_blank" href="http://facebook.com/<?php echo $this->item->facebook ?>">
                     <span class="icon-facebook"></span> <?php echo $this->item->facebook ?></a>
             </div>
         <?php } ?>     
-        <?php if (!empty($this->item->twitter)) { ?>        
+        <?php if ($this->item->twitter) { ?>        
             <div>
                 <a target="_blank" href="http://twitter.com/<?php echo $this->item->twitter ?>">
                     <span class="icon-twitter"></span> <?php echo $this->item->twitter ?></a>
             </div>
         <?php } ?>     
-        <?php if (!empty($this->item->linkedin)) { ?>
+        <?php if ($this->item->linkedin) { ?>
             <div>
                 <a target="_blank" href="http://www.linkedin.com/in/<?php echo $this->item->linkedin ?>">
                     <span class="icon-linkedin"></span> <?php echo $this->item->linkedin ?>

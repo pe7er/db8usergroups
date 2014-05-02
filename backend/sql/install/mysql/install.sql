@@ -1,3 +1,7 @@
+/* 
+Note: categories & asset_id = legacy from previous db8locate component & might be removed.
+*/
+
 CREATE TABLE IF NOT EXISTS `#__db8usergroups_items` (
   `db8usergroups_item_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -17,14 +21,14 @@ CREATE TABLE IF NOT EXISTS `#__db8usergroups_items` (
   `categories` varchar(50) NOT NULL,
   `description` mediumtext,
   `meetinginfo` mediumtext NOT NULL,
-  `location` varchar(60) NOT NULL,
+  `location` varchar(100) NOT NULL,
   `address` varchar(50) NOT NULL,
   `postcode` varchar(10) NOT NULL,
   `city` varchar(50) NOT NULL,
   `region` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
-  `latitude` varchar(10) NOT NULL,
-  `longitude` varchar(10) NOT NULL,
+  `latitude` varchar(10) NOT NULL DEFAULT '0',
+  `longitude` varchar(10) NOT NULL DEFAULT '0',
   `website` varchar(255) NOT NULL,
   `version` int(10) unsigned NOT NULL DEFAULT '1',
   `language` char(7) NOT NULL DEFAULT '*',
@@ -46,5 +50,6 @@ CREATE TABLE IF NOT EXISTS `#__db8usergroups_items` (
   `meetup_groupid` varchar(100) NOT NULL,
   `fullprovisional` tinyint(3) NOT NULL DEFAULT '1',
   `teamdetails` mediumtext NOT NULL,
+  `active` tinyint(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`db8usergroups_item_id`)
 ) DEFAULT CHARSET=utf8;

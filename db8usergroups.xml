@@ -35,6 +35,14 @@
     <administration>
         <!-- Administration menu -->
         <menu view="cpanel">COM_DB8USERGROUPS</menu>
+		<menu 
+			link="com_db8usergroups&amp;view=items" 
+			view="items" 
+			>COM_DB8USERGROUPS_TITLE_ITEMS</menu>
+		<menu 
+			link="com_categories&amp;extension=com_db8usergroups" 
+			view="categories"
+			>COM_DB8USERGROUPS_TITLE_CATEGORIES</menu>
 
         <!-- Back-end files -->
         <files folder="backend">

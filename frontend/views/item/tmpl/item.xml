@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_DB8USERGROUPS_VIEW_USERGROUP">
+        <message>
+            <![CDATA[COM_DB8USERGROUPS_VIEW_USERGROUP_DESC]]>
+        </message>
+    </layout>
+</metadata>

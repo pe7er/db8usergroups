@@ -20,16 +20,16 @@
                label="COM_DB8USERGROUPS_ITEM_FIELD_NAME"
                required="true"
                Size="50" />
+
+        <field name="slug" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_ALIAS"
+               required="false"
+               Size="50" />
        
         <field name="usergroupemail" type="text"
                class="inputbox"
                label="COM_DB8USERGROUPS_ITEM_FIELD_EMAIL"
-               required="false"
-               size="50" />
-        
-        <field name="phone" type="text"
-               class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_PHONE"
                required="false"
                size="50" />
         
@@ -44,37 +44,61 @@
                label="COM_DB8USERGROUPS_ITEM_FIELD_PHOTO"
                required="false"
                size="100" />
-
-        <field name="twitter" type="text"
+        
+        <field name="contactname" type="text"
                class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_TWITTER"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_CONTACTNAME"
                required="false"
                size="50" />
 
-        <field name="linkedin" type="text"
+        <field name="contactemail" type="text"
                class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_LINKEDIN"
-               required="false"
-               size="50" />
-                   
-        <field name="facebook" type="text"
-               class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_FACEBOOK"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_CONTACTEMAIL"
                required="false"
                size="50" />
 
-        <field name="googleplus" type="text"
+        <field name="contactphone" type="text"
                class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_GOOGLEPLUS"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_CONTACTPHONE"
                required="false"
                size="50" />
 
-        <field name="website" type="text"
+        <field name="contactname2" type="text"
                class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_WEBSITE"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_CONTACTNAME2"
                required="false"
                size="50" />
 
+        <field name="contactemail2" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_CONTACTEMAIL2"
+               required="false"
+               size="50" />
+
+        <field name="contactphone2" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_CONTACTPHONE2"
+               required="false"
+               size="50" />
+        
+        <field name="rssfeed" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_RSSFEED"
+               required="false"
+               size="50" />
+
+        <field name="meetup_apikey" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_MEETUPAPIKEY"
+               required="false"
+               size="50" />
+
+        <field name="meetup_groupid" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_MEETUPGROUPID"
+               required="false"
+               size="50" />
+        
     </fieldset>
 
     <fieldset name="address"
@@ -82,16 +106,9 @@
               description="COM_DB8USERGROUPS_ADDRESS_BASIC_DESC"
               class="span4">
 
-
-        <field name="organisation" type="text"
+        <field name="location" type="text"
                class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_ORGANISATION"
-               required="false"
-               size="50" />	
-
-        <field name="department" type="text"
-               class="inputbox"
-               label="COM_DB8USERGROUPS_ITEM_FIELD_DEPARTMENT"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_LOCATION"
                required="false"
                size="50" />	
                     
@@ -124,7 +141,14 @@
                label="COM_DB8USERGROUPS_ITEM_FIELD_COUNTRY"
                required="true"
                size="50" />	
-        
+
+        <field name="catid" type="category"
+               extension="com_db8usergroups"
+               class="inputbox"
+               label="JCATEGORY"
+               required="true"
+               size="1" />	
+                
         <field name="latitude" type="text"
                class="inputbox"
                label="COM_DB8USERGROUPS_ITEM_FIELD_LATITUDE"
@@ -136,6 +160,37 @@
                label="COM_DB8USERGROUPS_ITEM_FIELD_LONGITUDE"
                required="false"
                size="10" />
+
+        <field name="twitter" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_TWITTER"
+               required="false"
+               size="50" />
+
+        <field name="linkedin" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_LINKEDIN"
+               required="false"
+               size="50" />
+                   
+        <field name="facebook" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_FACEBOOK"
+               required="false"
+               size="50" />
+
+        <field name="googleplus" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_GOOGLEPLUS"
+               required="false"
+               size="50" />
+
+        <field name="website" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_WEBSITE"
+               required="false"
+               size="50" />
+                
         
     </fieldset>
         
@@ -143,13 +198,6 @@
               label="COM_DB8USERGROUPS_SETTINGS_ITEM"
               description="COM_DB8USERGROUPS_ADDRESS_BASIC_DESC"
               class="span4">
-
-        <field name="catid" type="category"
-               extension="com_db8usergroups"
-               class="inputbox"
-               label="JCATEGORY"
-               required="true"
-               size="1" />	
         
         <!-- Tags does not work yet with J3.2.3 because it relies on JTable
         <field name="tags"
@@ -167,6 +215,26 @@
                filter="intval" size="1" default="1" >
             <option value="1">JPUBLISHED</option>
             <option value="0">JUNPUBLISHED</option>
+        </field>
+
+        <field name="active" type="list" 
+               label="COM_DB8USERGROUPS_ITEM_FIELD_ACTIVE"
+               class="inputbox"
+               filter="intval" size="1" default="0" >
+            <option value="0">SELECT</option>
+            <option value="1">ACTIVE</option>
+            <option value="2">INACTIVE</option>
+            <option value="3">UNKNOWN</option>
+        </field>
+
+
+        <field name="fullprovisional" type="list" 
+               label="COM_DB8USERGROUPS_ITEM_FIELD_STATUS"
+               class="inputbox"
+               filter="intval" size="1" default="1" >
+            <option value="0">SELECT</option>
+            <option value="1">PROVISIONAL</option>
+            <option value="2">FULL</option>
         </field>
 
         <field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" size="1" />
@@ -200,7 +268,32 @@
                size="22"
                format="%Y-%m-%d %H:%M:%S" 
                filter="user_utc" />                    
-
+       
+        <field name="meetinginfo" type="text"
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_MEETINGINFO"
+               required="false"
+               size="50" />
+       
+        <field name="teamdetails" type="textarea"
+               class="inputbox"
+               rows="10" cols="5"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_TEAMDETAILS"
+               required="false" />
+        
     </fieldset>                
+
+    <fieldset name="information"
+              label="COM_DB8USERGROUPS_INFO_ITEM"
+              class="span12">
+
+
+        <field name="description" type="editor" 
+               width="200" filter="safehtml" 
+               class="inputbox"
+               label="COM_DB8USERGROUPS_ITEM_FIELD_DESCRIPTION"
+               required="false" />
+        
+    </fieldset>     
 
 </form>

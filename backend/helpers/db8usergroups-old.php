@@ -20,7 +20,7 @@ abstract class Db8usergroupsHelper {
         JSubMenuHelper::addEntry(JText::_('COM_DB8USERGROUPS_TITLE_ITEMS'), 
                 'index.php?option=com_db8usergroups', 
                 $submenu == 'locations');
-        JSubMenuHelper::addEntry(JText::_('COM_DB8USERGROUPS_SUBMENU_CATEGORIES'), 
+        JSubMenuHelper::addEntry(JText::_('COM_DB8USERGROUPS_TITLE_CATEGORIES'), 
                 'index.php?option=com_categories&view=categories&extension=com_db8usergroups', 
                 $submenu == 'categories');
 

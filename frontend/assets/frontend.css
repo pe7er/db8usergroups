@@ -1,10 +1,12 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 10-Apr-2014, 19:41:19
-    Author     : pe7er
-*/
+/* @package	db8usergroups */
+/* @author	Peter Martin */
+/* @copyright	Copyright (C) 2014 Peter Martin / db8.nl */
+/* @license	GNU General Public License version 2 or later */
 
+#map {
+    width: auto;
+    height: 450px;
+    border: solid 1pt #b2b2b2;
+}
+
+#map img{ max-width: none; }
