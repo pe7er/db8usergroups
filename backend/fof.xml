@@ -2,7 +2,7 @@
 <fof>
     <backend>
         <dispatcher>
-            <option name="default_view">items</option>
+            <option name="default_view">cpanel</option>
         </dispatcher>
     </backend>
 </fof>

@@ -10,7 +10,7 @@ defined('_JEXEC') or die();
 
 class Db8usergroupsHelperCategories
 {
-	public static function categories($category)
+	public static function oldcategories($category)
 	{
 		// Get the event ID
 		$params = JFactory::getApplication()->getPageParameters('com_db8usergroups');
@@ -27,4 +27,35 @@ class Db8usergroupsHelperCategories
 					
 		return $categories;
 	}
+        
+        public static function getCategories()
+        {
+                // Initialize variables.
+                $options = array();
+ 
+                $db     = JFactory::getDbo();
+                $query  = $db->getQuery(true);
+                
+                $query->select('node.id AS value, IF(node.level = 2, node.title, CONCAT("--",node.title)) AS text ');                
+                $query->from('#__categories AS node, #__categories AS parent');
+                $query->where('node.extension = "com_db8usergroups" AND parent.extension = "com_db8usergroups"');
+                $query->where('node.level > 1');
+                $query->where('node.lft BETWEEN parent.lft AND parent.rgt');// AND parent.id = 205 AND node.id <> 205');
+                $query->group('value');
+                $query->order('node.lft');
+                
+               // echo "options=".$query;
+                // Get the options.
+                $db->setQuery($query);
+ 
+                $options = $db->loadObjectList();
+ 
+                // Check for a database error.
+                if ($db->getErrorNum()) {
+                        JError::raiseWarning(500, $db->getErrorMsg());
+                }
+ 
+                return $options;
+        }        
+        
 }

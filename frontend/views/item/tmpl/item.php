@@ -34,12 +34,8 @@ $this->item->category = Db8usergroupsHelperItem::category($this->item->catid);
                 email: <a target="_blank" href="mailto:<?php echo $this->item->usergroupemail; ?>"><?php echo $this->item->usergroupemail; ?></a>
             </div>
         <?php } ?>     
-        <?php if ($this->item->phone) { ?>        
-            <div>
-                <span class="icon-phone"></span> <?php echo $this->item->phone; ?>
-            </div>
-        <?php } ?>     
-        <?php if ($this->item->usergroupwebsite) { ?>        
+        
+        <?php if ($this->item->website) { ?>        
             <div>
                 <a target="_blank" href="http://<?php echo $this->item->website; ?>">
                     <span class="icon-earth"></span> <?php echo $this->item->website; ?></a>

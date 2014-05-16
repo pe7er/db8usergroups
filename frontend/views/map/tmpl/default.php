@@ -20,16 +20,8 @@ $document->addScript('http://google-maps-utility-library-v3.googlecode.com/svn/t
 $document->addStyleSheet(JURI::base() . "components/com_db8usergroups/assets/frontend.css");
 $this->loadHelper('item');
 
-// Create some shortcuts.
-//$params = &$this->item->params;
-//$n = count($this->items);
-//$listOrder	= $this->escape($this->state->get('list.ordering'));
-//$listDirn	= $this->escape($this->state->get('list.direction'));
 //Get Filter options
 //require_once '/var/www/development/components/com_db8usergroups/helpers/categories.php';
-
-JHtml::_('behavior.framework');
-
 require_once JPATH_COMPONENT . '/helpers/categories.php';
 $categories = Db8usergroupsHelperCategories::getCategories();
 ?>
@@ -46,8 +38,8 @@ $categories = Db8usergroupsHelperCategories::getCategories();
         var markers = [];
 <?php
 foreach ($this->items as $item) :
-
-    if (!empty($item->latitude) AND !empty($item->longitude)) {
+    
+    if (!empty($item->latitude) AND !empty($item->longitude)){
         //$title = str_replace("'", "&apos;","<strong>".$item->title."</strong><br/>".$item->city."</br>".$item->country);
         echo "var latLng = new google.maps.LatLng(" . $item->latitude . "," . $item->longitude . ");";
         echo "var marker = new google.maps.Marker({
@@ -66,16 +58,7 @@ foreach ($this->items as $item) :
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<div class="usergroups">
-    <div class="row-fluid">
-        <h1><?php echo JText::_('COM_DB8USERGROUPS_TITLE') ?></h1>
-    </div>
 
-
-    <div class="span12">
-        <div id="map"></div>
-    </div>
-    <br/>
 <form id="adminForm" method="post" name="adminForm">
     <?php echo JText::_('COM_DB8USERGROUPS_CATEGORIES'); ?>:
     <select name="filter.category" class="inputbox" onchange="this.form.submit()">
@@ -87,20 +70,24 @@ foreach ($this->items as $item) :
     </button>
 </form>    
 
+<div class="usergroups">
+    <div class="row-fluid">
+        <h1><?php echo JText::_('COM_DB8USERGROUPS_TITLE') ?></h1>
+    </div>
+
+
+    <div class="span12">
+        <div id="map"></div>
+    </div>
+    <br/>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th></th>
-                    <th>
-                        <?php echo JHTML::_('grid.sort', 'COM_DB8USERGROUPS_NAME', 'title', $this->lists->order_Dir, $this->lists->order, 'default'); ?>
-                    </th>
-                    <th>
-                        <?php echo JHTML::_('grid.sort', 'COM_DB8USERGROUPS_LOCATION', 'city', $this->lists->order_Dir, $this->lists->order, 'default'); ?>
-                    </th>
-                    <th>
-                        <?php echo JHTML::_('grid.sort', 'COM_DB8USERGROUPS_CATEGORY', 'category', $this->lists->order_Dir, $this->lists->order, 'default'); ?>
-                    </th>
+                    <th><?php echo JText::_('COM_DB8USERGROUPS_NAME') ?></th>
+                    <th><?php echo JText::_('COM_DB8USERGROUPS_LOCATION') ?></th>
+                    <th><?php echo JText::_('COM_DB8USERGROUPS_CATEGORY') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -119,14 +106,14 @@ foreach ($this->items as $item) :
                                 </a>
                             </td>
                             <td><a href="<?php echo JRoute::_('index.php?option=com_db8usergroups&view=item&id=' . $item->db8usergroups_item_id) ?>">
-                                    <?php echo $this->escape($item->title); ?>
+        <?php echo $this->escape($item->title); ?>
                                 </a>
                             </td>
                             <td><?php echo $this->escape($item->address); ?><br/>
-                                <?php echo $this->escape($item->city); ?> <?php echo $this->escape($item->country); ?></td>
+                        <?php echo $this->escape($item->city); ?> <?php echo $this->escape($item->country); ?></td>
                             <td><?php echo $this->escape($item->category); ?></td>
                         </tr>
-                    <?php endforeach; ?>
+    <?php endforeach; ?>
             </tbody>
         </table>
 

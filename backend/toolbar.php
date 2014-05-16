@@ -31,10 +31,23 @@ class Db8usergroupsToolbar extends FOFToolbar {
         JToolBarHelper::custom('mapitems', 'copy.png', 'copy_f2.png', 'COM_DB8USERGROUPS_MAPITEM', false);
     }
 
-   /* public function onItemsEdit() {
-        parent::onBrowse();
+    /* public function onItemsEdit() {
+      parent::onBrowse();
 
-        JToolBarHelper::custom('mapitem', 'copy.png', 'copy_f2.png', 'COM_DB8USERGROUPS_MAPITEM', false);
-    }*/
+      JToolBarHelper::custom('mapitem', 'copy.png', 'copy_f2.png', 'COM_DB8USERGROUPS_MAPITEM', false);
+      } */
+
+    /**
+     * Prepares the toolbar for Cpanel view
+     *
+     * @return void
+     */
+    public function onCpanelsBrowse() {
+        // Set the toolbar title
+        JToolBarHelper::title(JText::_('COM_DB8USERGROUPS_CPANEL_TITLE_DASHBOARD'), 'COM_DB8USERGROUPS');
+        
+        // Add Components options (see config.xml)
+        JToolBarHelper::preferences('com_db8usergroups');
+    }
 
 }
