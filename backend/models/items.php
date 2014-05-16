@@ -12,6 +12,125 @@ class Db8usergroupsModelItems extends FOFmodel {
 
     protected $_savestate = 1;
 
+    /**
+     * This runs before the browse() method. Return false to prevent executing
+     * the method.
+     * 
+     * @return bool
+     */
+    public function onBeforeBrowse() {
+        $result = parent::onBeforeBrowse();
+        if ($result) {
+            // Get the current order by column
+            $orderby = $this->getThisModel()->getState('filter_order', '');
+            // If it's not one of the allowed columns, force it to be the "ordering" column
+            if (!in_array($orderby, array('db8usergroups_item_id', 'ordering', 'title', 'due'))) {
+                $orderby = 'ordering';
+            }
+            // Apply ordering and filter only the enabled items
+            $this->getThisModel()
+                    ->filter_order($orderby)
+                    ->enabled(1);
+        }
+        return $result;
+    }
+
+    private function getFilterValues() {
+        $enabled = $this->getState('enabled', '', 'cmd');
+
+        return (object) array(
+                    'category' => $this->getState('filter_category', null, 'int'),
+                    'id' => $this->getState('id', null, 'int'),
+                    //'ordering' => $this->getState('Joomla.tableOrdering', null, 'cmd'),
+                    'enabled' => $enabled,
+        );
+    }
+
+    protected function _buildQueryColumns($query) {
+        $db = $this->getDbo();
+        $state = $this->getFilterValues();
+
+        $query->select(array(
+            $db->qn('tbl') . '.*',
+            $db->qn('cat') . '.' . $db->qn('title') . ' AS ' . $db->qn('category'),
+        ));
+
+        $order = $this->getState('Joomla.tableOrdering', 'db8usergroups_item_id', 'cmd');
+        if (!in_array($order, array_keys($this->getTable()->getData()))) {
+            $order = 'db8usergroups_item_id';
+        }
+        $dir = $this->getState('filter_order_Dir', 'DESC', 'cmd');
+        $query->order($order . ' ' . $dir);
+    }
+
+    protected function _buildQueryJoins($query) {
+        $db = $this->getDbo();
+        $query->join('LEFT OUTER', $db->qn('#__categories') . ' AS ' . $db->qn('cat') . ' ON ' .
+                $db->qn('cat') . '.' . $db->qn('id') . ' = ' .
+                $db->qn('tbl') . '.' . $db->qn('catid'))
+        ;
+    }
+
+    protected function getCategoryChildren($catid) {
+
+        $db = $this->getDbo();
+        $query = $db->getQuery(true);
+        $query->select('node.id')
+                ->from('#__categories AS node, #__categories AS parent')
+                ->where('node.lft BETWEEN parent.lft AND parent.rgt')
+                ->where('parent.id = ' . $catid)
+                ->order('node.lft');
+
+        $db->setQuery($query);
+        $catids = $db->loadColumn();
+
+        return $catids;
+    }
+
+    protected function _buildQueryWhere($query) {
+        $db = $this->getDbo();
+        $state = $this->getFilterValues();
+
+        if (is_numeric($state->enabled)) {
+            $query->where(
+                    $db->qn('tbl') . '.' . $db->qn('enabled') . ' = ' .
+                    $db->q($state->enabled)
+            );
+        }
+
+        // Retrieve all items for category and its child categories
+        if (is_numeric($state->category) && ($state->category > 0)) {
+            $catids = $this->getCategoryChildren($state->category);
+            if (array($catids)) {
+                $query->where($db->qn('tbl') . '.' . $db->qn('catid') . ' IN (' . implode(",", $db->q($catids)) . ')');
+            } else {
+                $query->where($db->qn('tbl') . '.' . $db->qn('catid') . ' = ' . $db->q($catids));
+            }
+        }
+
+        if (is_numeric($state->id) && ($state->id > 0)) {
+            $query->where(
+                    $db->qn('tbl') . '.' . $db->qn('usergroup_item_id') . ' = ' .
+                    $db->q($state->id)
+            );
+        }
+    }
+
+    public function buildQuery($overrideLimits = false) {
+        $db = $this->getDbo();
+        $query = FOFQueryAbstract::getNew($db)
+                ->from($db->quoteName('#__db8usergroups_items') . ' AS ' . $db->qn('tbl'));
+
+        $this->_buildQueryColumns($query);
+        $this->_buildQueryJoins($query);
+        $this->_buildQueryWhere($query);
+        //$this->_buildQueryGroup($query);
+
+        return $query;
+    }
+
+    /* */
+
     public function onAfterGetItem(&$record) {
 
         $session = JFactory::getSession();

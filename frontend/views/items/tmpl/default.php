@@ -76,17 +76,25 @@ foreach ($this->items as $item) :
         <div id="map"></div>
     </div>
     <br/>
+    <?php // <?php echo JHtml::_('select.genericlist', $this->months, 'filter_month[]', 'class="input-medium" multiple="true" size="12"', 'value', 'text', $this->getModel()->getState('filter_month', ''), 'filter_month', true); 
+    //*/?>
 <form id="adminForm" method="post" name="adminForm">
     <?php echo JText::_('COM_DB8USERGROUPS_CATEGORIES'); ?>:
-    <select name="filter.category" class="inputbox" onchange="this.form.submit()">
-        <option value=""><?php echo JText::_('COM_DB8USERGROUPS_SELECT_CATEGORY'); ?></option>
-        <?php echo JHtml::_('select.options', $categories, 'value', 'text', $this->get('filter.category')); ?>
+    <select name="filter_category" class="inputbox" onchange="this.form.submit()">
+        <option value="">
+            <?php echo JText::_('COM_DB8USERGROUPS_SELECT_CATEGORY'); ?>
+        </option>
+        <?php echo JHtml::_('select.options', $categories, 'value', 'text', $this->getModel()->getState('filter_category', '')); ?>
     </select>
     <button type="submit">
         <?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>
     </button>
-</form>    
 
+    <br/>[todo: Free filter Input Box]
+    <br/>[todo: List limit dropdown]
+    <br/>[todo: address input box + range selection]
+    
+    
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -129,7 +137,6 @@ foreach ($this->items as $item) :
                     <?php endforeach; ?>
             </tbody>
         </table>
-
-
+</form>    
     </div>
 </div>
