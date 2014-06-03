@@ -32,6 +32,14 @@ JHtml::_('behavior.framework');
 
 require_once JPATH_COMPONENT . '/helpers/categories.php';
 $categories = Db8usergroupsHelperCategories::getCategories();
+
+// to do:
+// 1. auto center + auto zoom
+// http://stackoverflow.com/questions/15719951/google-maps-api-v3-auto-center-map-with-multiple-markers
+// 2. filter columns
+// 3. radius search
+// 4. configure category select, map icon,
+
 ?>
 <script type="text/javascript">
     function initialize() {
@@ -90,6 +98,22 @@ foreach ($this->items as $item) :
         <?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>
     </button>
 
+    <?php 
+    // define distance dropdown box -> 2do: make it paramater
+    $distances = array(5,10,20,30,50,100,150,200);
+    ?>
+    <br/><?php echo JText::_('COM_DB8USERGROUPS_YOURLOCATION'); ?>
+    <input id="yourlocation" type="text" name="yourlocation" value="<?php echo $this->getModel()->getState('yourlocation', '');?>" onchange="this.form.submit()" class="input" size="40" placeholder="Your address">
+    <br/>
+    <?php echo JText::_('COM_DB8USERGROUPS_MAXDISTANCE'); ?>
+    <select name="filter_distance" class="inputbox" onchange="this.form.submit()">
+        <option value="">
+            <?php echo JText::_('COM_DB8USERGROUPS_SELECT_DISTANCE'); ?>
+        </option>
+        <?php echo JHtml::_('select.options', $distances, 'value', 'text', $this->getModel()->getState('filter_distance', '')); ?>
+    </select>    
+    
+    
     <br/>[todo: Free filter Input Box]
     <br/>[todo: List limit dropdown]
     <br/>[todo: address input box + range selection]

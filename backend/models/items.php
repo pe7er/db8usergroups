@@ -12,6 +12,22 @@ class Db8usergroupsModelItems extends FOFmodel {
 
     protected $_savestate = 1;
 
+    
+    	protected function loadFormData()
+	{
+                JFactory::getApplication()->setUserState('com_db8usergroups.add.item.data', '');
+            
+		if (empty($this->_formData))
+		{
+			return array();
+		}
+		else
+		{
+			return $this->_formData;
+		}
+	}
+    
+    
     /**
      * This runs before the browse() method. Return false to prevent executing
      * the method.
@@ -183,7 +199,7 @@ class Db8usergroupsModelItems extends FOFmodel {
 // retrieve coordinates from Google via API
             $where = stripslashes($item->location . ", " . $item->address . ", " . $item->postcode . ", " . $item->city . ", " . $item->region . ", " . $item->country);
             $whereurl = urlencode($where);
-            $url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=true&address=$whereurl";
+            $url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=$whereurl";
             $json = file_get_contents($url); // get the data from Google Maps API
             $result = json_decode($json, true); // convert it from JSON to php array
             $latitude = $result['results'][0]['geometry']['location']['lat'];

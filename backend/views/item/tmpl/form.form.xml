@@ -8,7 +8,7 @@
     Items edit form file
 -->
 
-<form validate="true" serverside_validate="true">
+<form validate="true">
 
     <fieldset name="basic_configuration"
               label="COM_DB8USERGROUPS_LOCATION_ITEM_EDIT"
@@ -125,7 +125,7 @@
                size="15" />	
             
         <field name="city" type="text"
-               class="inputbox"
+               class="inputbox required"
                label="COM_DB8USERGROUPS_ITEM_FIELD_CITY"
                required="true"
                size="50" />	

@@ -11,7 +11,7 @@ defined('_JEXEC') or die();
 class Db8usergroupsDispatcher extends FOFDispatcher {
 
     public function __construct($config = array()) {
-        $this->defaultView = 'items';
+        $this->defaultView = 'cpanel';
 
         parent::__construct($config);
     }
